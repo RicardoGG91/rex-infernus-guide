@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { LocateFixed, Map, Minus, Plus, X } from "lucide-react";
+import { ExternalLink, LocateFixed, Map, Minus, Plus, X } from "lucide-react";
 import { getOrderedSteps, GuideStep } from "@/data/guide";
 
 export default function MapPage() {
@@ -14,9 +14,10 @@ export default function MapPage() {
   return (
     <div className="space-y-4">
       <header>
-        <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary"><Map className="h-4 w-4" /> Lienzo provisional</p>
+        <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.16em] text-primary"><Map className="h-4 w-4" /> Ubicaciones</p>
         <h1 className="mt-2 text-3xl font-black tracking-tight text-slate-950">Mapa</h1>
-        <p className="mt-2 text-sm font-medium leading-6 text-slate-600">Área técnica para probar zoom, desplazamiento y futuros marcadores. No representa el mapa del juego.</p>
+        <p className="mt-2 text-sm font-medium leading-6 text-slate-600">No copiamos mapas de terceros sin licencia. Usa la referencia interactiva externa para ubicaciones exactas; el lienzo inferior sigue siendo solo técnico.</p>
+        <a href="https://codzombiesguides.com/maps/rex-infernus/" target="_blank" rel="noreferrer" className="mt-4 flex min-h-12 items-center justify-center gap-2 rounded-2xl bg-primary px-4 text-sm font-black text-white">Abrir mapa interactivo fiable <ExternalLink className="h-4 w-4" /></a>
       </header>
 
       <section className="relative overflow-hidden rounded-3xl border-2 border-blue-100 bg-slate-100 shadow-sm">

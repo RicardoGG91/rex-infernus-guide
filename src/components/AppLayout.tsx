@@ -1,4 +1,4 @@
-import { BookOpen, Home, Map, Play, Target } from "lucide-react";
+import { BookOpen, Home, Play, Sparkles, Target } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
@@ -6,7 +6,7 @@ const navItems = [
   { to: "/", label: "Inicio", icon: Home },
   { to: "/guia", label: "Guía", icon: BookOpen },
   { to: "/partida", label: "Partida", icon: Play },
-  { to: "/mapa", label: "Mapa", icon: Map },
+  { to: "/solvers", label: "Solvers", icon: Sparkles },
   { to: "/progreso", label: "Progreso", icon: Target },
 ];
 

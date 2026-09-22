@@ -13,6 +13,7 @@ import MapPage from "@/pages/MapPage";
 import NotFound from "@/pages/NotFound";
 import ProgressPage from "@/pages/ProgressPage";
 import SearchPage from "@/pages/SearchPage";
+import SolversPage from "@/pages/SolversPage";
 import StepDetailPage from "@/pages/StepDetailPage";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
               <Route path="/partida" element={<GameModePage />} />
               <Route path="/partida/:stepId" element={<GameModePage />} />
               <Route path="/mapa" element={<MapPage />} />
+              <Route path="/solvers" element={<SolversPage />} />
               <Route path="/progreso" element={<ProgressPage />} />
               <Route path="/buscar" element={<SearchPage />} />
               <Route path="/favoritos" element={<FavoritesPage />} />

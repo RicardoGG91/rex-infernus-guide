@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { ArrowLeft, ArrowRight, Check, Clock, Heart, Lightbulb, MapPin, TriangleAlert, XCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Clock, ExternalLink, Heart, Lightbulb, MapPin, ShieldCheck, TriangleAlert, XCircle } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { EmptyContent } from "@/components/EmptyContent";
 import { useProgress } from "@/context/ProgressContext";
-import { getOrderedSteps, getStepById } from "@/data/guide";
+import { getOrderedSteps, getSourcesForStep, getStepById } from "@/data/guide";
 import { cn } from "@/lib/utils";
 
 export default function StepDetailPage() {
@@ -23,6 +23,7 @@ export default function StepDetailPage() {
   const next = steps[index + 1];
   const completed = completedIds.includes(step.id);
   const favorite = favoriteIds.includes(step.id);
+  const sources = getSourcesForStep(step);
 
   return (
     <article className="space-y-5">
@@ -36,11 +37,15 @@ export default function StepDetailPage() {
         </button>
       </header>
 
-      <img src={step.mainImage ?? "/assets/image-placeholder.png"} alt={step.mainImage ? `Captura del paso ${step.number}` : "Captura real pendiente"} className="aspect-video w-full rounded-3xl border bg-slate-50 object-cover" />
+      <figure>
+        <img src={step.mainImage ?? "/assets/image-placeholder.png"} alt={step.mainImageAlt ?? "Captura exacta pendiente"} className="aspect-video w-full rounded-3xl border bg-slate-50 object-cover" />
+        {step.imageCredit && <figcaption className="mt-2 px-2 text-xs font-semibold text-slate-500">{step.imageCredit}{step.imageSourceUrl && <> · <a href={step.imageSourceUrl} target="_blank" rel="noreferrer" className="font-black text-primary">Fuente <ExternalLink className="inline h-3 w-3" /></a></>}</figcaption>}
+      </figure>
 
       <section className="rounded-3xl border bg-white p-5 shadow-sm">
         <p className="text-xs font-extrabold uppercase tracking-wider text-primary">Objetivo</p>
         <p className="mt-2 text-xl font-black leading-7 text-slate-950">{step.objective}</p>
+        <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">{step.description}</p>
         {step.location && <p className="mt-4 flex items-start gap-2 text-sm font-bold text-slate-600"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{step.location}</p>}
       </section>
 
@@ -56,6 +61,14 @@ export default function StepDetailPage() {
       </div>
 
       {step.approximateDuration && <p className="flex items-center gap-2 text-sm font-bold text-slate-600"><Clock className="h-4 w-4 text-primary" /> Duración aproximada: {step.approximateDuration}</p>}
+
+      <section className="rounded-3xl border bg-white p-5 shadow-sm">
+        <h2 className="flex items-center gap-2 text-lg font-black text-slate-950"><ShieldCheck className="h-5 w-5 text-emerald-600" /> Fuentes y verificación</h2>
+        <p className="mt-2 text-xs font-semibold text-slate-500">Contrastado el {step.lastVerified} · {step.verificationStatus === "official" ? "Fuente oficial" : "Cruce de fuentes"}</p>
+        <div className="mt-3 grid gap-2">
+          {sources.map((source) => <a key={source.id} href={source.url} target="_blank" rel="noreferrer" className="flex min-h-11 items-center justify-between gap-3 rounded-2xl bg-blue-50 px-4 text-sm font-black text-primary"><span>{source.name}</span><ExternalLink className="h-4 w-4 shrink-0" /></a>)}
+        </div>
+      </section>
 
       <button onClick={() => toggleCompleted(step.id)} className={cn("flex min-h-16 w-full items-center justify-center gap-2 rounded-2xl px-5 text-base font-black", completed ? "bg-emerald-600 text-white" : "bg-primary text-white")}>
         <Check className="h-6 w-6" /> {completed ? "✓ COMPLETADO" : "○ MARCAR COMO COMPLETADO"}

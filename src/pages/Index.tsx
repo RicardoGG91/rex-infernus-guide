@@ -1,4 +1,4 @@
-import { BookOpen, ChevronRight, Heart, Map, Play, Search, ShieldCheck } from "lucide-react";
+import { BookOpen, ChevronRight, Heart, Map, Play, Search, ShieldCheck, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ProgressSummary } from "@/components/ProgressSummary";
 import { useProgress } from "@/context/ProgressContext";
@@ -6,7 +6,8 @@ import { getOrderedSteps } from "@/data/guide";
 
 const secondaryActions = [
   { to: "/guia", label: "Guía completa", icon: BookOpen },
-  { to: "/mapa", label: "Mapa", icon: Map },
+  { to: "/solvers", label: "Solvers", icon: Sparkles },
+  { to: "/mapa", label: "Mapa externo", icon: Map },
   { to: "/buscar", label: "Buscar", icon: Search },
   { to: "/favoritos", label: "Favoritos", icon: Heart },
 ];
@@ -30,7 +31,7 @@ export default function Index() {
           </div>
         </div>
         <p className="mt-5 max-w-md text-base font-semibold leading-6 text-slate-700">
-          Una guía rápida, preparada para consultar mientras juegas.
+          Guía de la misión principal de Black Ops 7 Zombies, con 17 fases, fuentes auditables y cuatro herramientas de puzzle.
         </p>
       </section>
 
@@ -66,7 +67,7 @@ export default function Index() {
       </section>
 
       <p className="px-2 text-center text-xs font-semibold leading-5 text-slate-500">
-        Las capturas, el mapa y los pasos reales se añadirán únicamente tras su verificación.
+        Información contrastada el 22/09/2026. Las imágenes son material promocional oficial atribuido; las capturas editoriales de terceros no se reproducen.
       </p>
     </div>
   );

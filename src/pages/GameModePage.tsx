@@ -48,7 +48,10 @@ export default function GameModePage() {
         <p className="mt-2 text-xl font-black leading-7 text-slate-950">{step.objective}</p>
       </section>
 
-      <img src={step.mainImage ?? "/assets/image-placeholder.png"} alt={step.mainImage ? `Captura del paso ${step.number}` : "Captura real pendiente"} className="aspect-video w-full rounded-3xl border bg-slate-50 object-cover" />
+      <figure>
+        <img src={step.mainImage ?? "/assets/image-placeholder.png"} alt={step.mainImageAlt ?? "Captura exacta pendiente"} className="aspect-video w-full rounded-3xl border bg-slate-50 object-cover" />
+        {step.imageCredit && <figcaption className="mt-2 px-2 text-xs font-semibold text-slate-500">{step.imageCredit}</figcaption>}
+      </figure>
 
       <section className="rounded-3xl border bg-white p-4 shadow-sm">
         <h2 className="text-sm font-black uppercase tracking-wider text-slate-950">Instrucciones esenciales</h2>
