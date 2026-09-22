@@ -1,0 +1,18 @@
+{
+  "name": "Rex Infernus Guide",
+  "short_name": "Rex Infernus",
+  "description": "Guía móvil de Rex Infernus para consulta rápida durante la partida.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FAFC",
+  "theme_color": "#1565C0",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/rex-infernus-logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
